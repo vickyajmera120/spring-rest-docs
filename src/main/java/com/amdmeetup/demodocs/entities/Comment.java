@@ -1,5 +1,6 @@
 package com.amdmeetup.demodocs.entities;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 @Data
+@Builder
 public class Comment {
     @Id
     @GeneratedValue
