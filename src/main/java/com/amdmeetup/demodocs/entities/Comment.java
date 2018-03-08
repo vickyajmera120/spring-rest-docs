@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 @Data
-public class Comments {
+public class Comment {
     @Id
     @GeneratedValue
     Long id;
