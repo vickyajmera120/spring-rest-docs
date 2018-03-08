@@ -5,13 +5,15 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 @Data
-public class Customer {
+public class Tweet {
     @Id
     @GeneratedValue
     Long id;
-    String name;
-    String address;
+    @OneToOne
+    User user;
+    String content;
 }
