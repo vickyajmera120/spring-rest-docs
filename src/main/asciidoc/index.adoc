@@ -12,4 +12,8 @@ include::{snippets}/create-user-with-success-1/request-fields.adoc[]
 include::{snippets}/create-user-with-success-1/curl-request.adoc[]
 
 .response
-include::{snippets}/create-case-with-success-1/http-response.adoc[]
+include::{snippets}/create-user-with-success-1/http-response.adoc[]
+
+== Diagrams
+
+plantuml::src/main/asciidoc/diagrams/NewTweetDiagram.plantuml

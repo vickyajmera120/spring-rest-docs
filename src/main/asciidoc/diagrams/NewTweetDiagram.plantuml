@@ -1,0 +1,11 @@
+@startuml
+skinparam monochrome true
+skinparam roundcorner 20
+
+title Helix - System Context
+[External Datasources] <<Software System>> as ExternalDatasources
+[Helix] <<Software System>> as Helix
+actor User
+Helix ..> ExternalDatasources : imports from
+User ..> Helix : configures external datasources
+@enduml

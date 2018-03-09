@@ -1,6 +1,7 @@
 package com.amdmeetup.demodocs;
 
 
+import com.amdmeetup.demodocs.config.ITConfig;
 import com.amdmeetup.demodocs.entities.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
@@ -19,7 +20,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = {DemodocsApplication.class})
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureRestDocs("target/snippets")
 @AutoConfigureMockMvc
 public class DemoDocsIT {
@@ -33,13 +34,14 @@ public class DemoDocsIT {
     @Test
     public void createUserWithSuccess() throws Exception {
         {
-            User user1 = User.builder().id(1l).name("John").email("john@example.com").build();
+            User user1 = User.builder().id(1L).name("John").email("john@example.com").build();
+            ITConfig.ConstrainedFields user1Fields = new ITConfig.ConstrainedFields(User.class);
 
             MvcResult user1Result = api.perform(post("/users").contentType(MediaType.APPLICATION_JSON_VALUE)
                     .accept(MediaType.APPLICATION_JSON_VALUE)
                     .content(objectMapper.writeValueAsString(user1)))
                     .andExpect(status().isCreated())
-                    .andDo(MockMvcRestDocumentation.document("{method-name}-{step}")).andReturn();
+                    .andDo(MockMvcRestDocumentation.document("{method-name}-{step}", user1Fields.requestFields())).andReturn();
 
         }
     }
