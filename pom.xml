@@ -47,17 +47,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.asciidoctor</groupId>
-            <artifactId>asciidoctorj</artifactId>
-            <version>1.5.4.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.asciidoctor</groupId>
-            <artifactId>asciidoctorj-diagram</artifactId>
-            <version>1.5.4.1</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
@@ -80,115 +69,28 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.asciidoctor</groupId>-->
-                <!--<artifactId>asciidoctor-maven-plugin</artifactId>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>generate-docs</id>-->
-                        <!--<phase>post-integration-test</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>process-asciidoc</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<sourceDocumentName>index.adoc</sourceDocumentName>-->
-                            <!--<backend>html</backend>-->
-                            <!--<outputDirectory>target/classes/static/docs</outputDirectory>-->
-                            <!--<attributes>-->
-                                <!--<snippets>${project.build.directory}/snippets</snippets>-->
-                            <!--</attributes>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
-        </plugins>
-    </build>
-
-    <profiles>
-        <!-- Graphvizdot is required for rendering diagrams in asciidocs -->
-        <profile>
-            <id>DocumentWithImagesWhenGraphWizInstalled</id>
-            <activation>
-                <file>
-                    <exists>/usr/bin/dot</exists>
-                </file>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoctor-maven-plugin</artifactId>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.asciidoctor</groupId>
-                                <artifactId>asciidoctorj</artifactId>
-                                <version>1.5.4.1</version>
-                            </dependency>
-                            <dependency>
-                                <groupId>org.asciidoctor</groupId>
-                                <artifactId>asciidoctorj-diagram</artifactId>
-                                <version>1.5.4.1</version>
-                            </dependency>
-                        </dependencies>
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>1.5.6</version>
+                <executions>
+                    <execution>
+                        <id>generate-docs</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
                         <configuration>
-                            <requires>
-                                <require>asciidoctor-diagram</require>
-                            </requires>
+                            <sourceDocumentName>index.adoc</sourceDocumentName>
+                            <backend>html</backend>
+                            <outputDirectory>target/classes/static/docs</outputDirectory>
                             <attributes>
-                                <graphvizdot>/usr/bin/dot</graphvizdot>
+                                <snippets>${project.build.directory}/snippets</snippets>
                             </attributes>
                         </configuration>
-                        <executions>
-                            <execution>
-                                <id>generate-docs</id>
-                                <phase>prepare-package</phase>
-                                <goals>
-                                    <goal>process-asciidoc</goal>
-                                </goals>
-                                <configuration>
-                                    <sourceDocumentName>index.adoc</sourceDocumentName>
-                                    <backend>html</backend>
-                                    <attributes>
-                                        <snippets>${project.build.directory}/snippets</snippets>
-                                    </attributes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>DocumentWithoutGraphWizInstalled</id>
-            <activation>
-                <file>
-                    <missing>/usr/bin/dot</missing>
-                </file>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoctor-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>generate-docs</id>
-                                <phase>prepare-package</phase>
-                                <goals>
-                                    <goal>process-asciidoc</goal>
-                                </goals>
-                                <configuration>
-                                    <sourceDocumentName>index.adoc</sourceDocumentName>
-                                    <backend>html</backend>
-                                    <attributes>
-                                        <snippets>${project.build.directory}/snippets</snippets>
-                                    </attributes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
