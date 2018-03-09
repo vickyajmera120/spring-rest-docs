@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
-public class UserResource {
+public class UserController {
 
   @Autowired
   private UserRepository userRepository;
@@ -38,8 +38,7 @@ public class UserResource {
   @ResponseBody
   public ResponseEntity<User> createUser(@RequestBody final User user) {
 
-    final User savedUser = userRepository.save(user);
-    return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    return new ResponseEntity<>(userRepository.save(user), HttpStatus.CREATED);
 
   }
 
