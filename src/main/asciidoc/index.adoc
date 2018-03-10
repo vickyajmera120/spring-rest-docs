@@ -85,8 +85,3 @@ include::{snippets}/create-comment/curl-request.adoc[]
 
 .response
 include::{snippets}/create-comment/http-response.adoc[]
-
-
-== Diagrams
-
-plantuml::src/main/asciidoc/diagrams/NewTweetDiagram.plantuml
