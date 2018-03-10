@@ -8,9 +8,6 @@ Anmol Singh, Vicky Ajmera;
 :sectlinks:
 
 
-*Document RESTful services by combining hand-written documentation with auto-generated snippets produced with Spring MVC Test.*
-'''
-
 == Creating a User
 This section describes how to create user.
 
