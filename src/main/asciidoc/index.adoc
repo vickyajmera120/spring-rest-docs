@@ -27,6 +27,7 @@ include::{snippets}/get-user/http-request.adoc[]
 
 .response
 include::{snippets}/get-user/http-response.adoc[]
+include::{snippets}/get-user/response-fields.adoc[]
 
 
 == Diagrams
