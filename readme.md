@@ -2,7 +2,7 @@
 
 [![Ahmedabad Java Meetup](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCUuuCj6gMJ51kXwg0YYaPf_Uq7weOFftbymbzrSua5WrDbynGAA)]()
 
-This is a simple demo app to show how test driven documentation works with spring REST docs. In this app user can tweet and add a commnet on a tweet.
+This is a sample app to show how test driven documentation works with spring REST docs. In this app user can tweet and add a comment on a tweet.
 
 The dependency added to support REST documentation:
 ```xml
