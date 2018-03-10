@@ -10,7 +10,7 @@ import static org.springframework.restdocs.request.RequestDocumentation.paramete
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.amdmeetup.demodocs.entities.User;
+import com.amdmeetup.demodocs.to.CreateUserTo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.FixMethodOrder;
@@ -40,15 +40,14 @@ public class DemoDocsIT {
 
   @Test
   public void test01CreateUser() throws Exception {
-    User user1 = User.builder().id(1L).name("John").email("john@example.com").build();
+    CreateUserTo userTo = CreateUserTo.builder().name("John").email("john@example.com").build();
 
     api.perform(post("/users").contentType(MediaType.APPLICATION_JSON_VALUE)
         .accept(MediaType.APPLICATION_JSON_VALUE)
-        .content(objectMapper.writeValueAsString(user1)))
+        .content(objectMapper.writeValueAsString(userTo)))
         .andExpect(status().isCreated())
         .andDo(document("create-user",
             requestFields(
-                fieldWithPath("id").description("id of the newly created user"),
                 fieldWithPath("name").description("name of the user"),
                 fieldWithPath("email").description("email of the user")
             ),

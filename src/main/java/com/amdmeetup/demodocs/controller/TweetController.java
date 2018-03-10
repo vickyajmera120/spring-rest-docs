@@ -2,6 +2,7 @@ package com.amdmeetup.demodocs.controller;
 
 import com.amdmeetup.demodocs.entities.Tweet;
 import com.amdmeetup.demodocs.repository.TweetRepository;
+import com.amdmeetup.demodocs.to.CreateTweetTo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,10 +37,13 @@ public class TweetController {
       consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
-  public ResponseEntity<Tweet> createTweet(@RequestBody final Tweet tweet) {
+  public ResponseEntity<Tweet> createTweet(@RequestBody final CreateTweetTo tweetTo) {
 
+    final Tweet tweet = Tweet.builder()
+        .userId(tweetTo.getUserId())
+        .content(tweetTo.getContent())
+        .build();
     return new ResponseEntity<>(tweetRepository.save(tweet), HttpStatus.CREATED);
-
   }
 
 }

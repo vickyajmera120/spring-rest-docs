@@ -2,6 +2,7 @@ package com.amdmeetup.demodocs.controller;
 
 import com.amdmeetup.demodocs.entities.User;
 import com.amdmeetup.demodocs.repository.UserRepository;
+import com.amdmeetup.demodocs.to.CreateUserTo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,8 +37,12 @@ public class UserController {
       consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
-  public ResponseEntity<User> createUser(@RequestBody final User user) {
+  public ResponseEntity<User> createUser(@RequestBody final CreateUserTo createUserTo) {
 
+    final User user = User.builder()
+        .name(createUserTo.getName())
+        .email(createUserTo.getEmail())
+        .build();
     return new ResponseEntity<>(userRepository.save(user), HttpStatus.CREATED);
 
   }
