@@ -7,27 +7,87 @@ Anmol Singh, Vicky Ajmera;
 :toclevels: 4
 :sectlinks:
 
-== User
 
-=== Create
+*Document RESTful services by combining hand-written documentation with auto-generated snippets produced with Spring MVC Test.*
+'''
+
+== Creating a User
+This section describes how to create user.
+
+=== Create User
 
 .request
+Following table describes required fields for creating a user.
 include::{snippets}/create-user/request-fields.adoc[]
-include::{snippets}/create-user/http-request.adoc[]
+include::{snippets}/create-user/curl-request.adoc[]
 
 .response
 include::{snippets}/create-user/http-response.adoc[]
 
 
-=== Get
+=== Get User
 
 .request
 include::{snippets}/get-user/path-parameters.adoc[]
-include::{snippets}/get-user/http-request.adoc[]
+include::{snippets}/get-user/curl-request.adoc[]
 
 .response
 include::{snippets}/get-user/http-response.adoc[]
 include::{snippets}/get-user/response-fields.adoc[]
+
+
+== Creating a tweet
+
+=== Create/Get user
+.request
+Following table describes required fields for creating a user.
+include::{snippets}/create-user-for-tweet/request-fields.adoc[]
+include::{snippets}/create-user-for-tweet/curl-request.adoc[]
+
+.response
+include::{snippets}/create-user-for-tweet/http-response.adoc[]
+
+=== Create a tweet
+Get userId from response of create-user
+
+.request
+Following table describes required fields for creating a tweet.
+include::{snippets}/create-tweet/request-fields.adoc[]
+include::{snippets}/create-tweet/curl-request.adoc[]
+
+.response
+include::{snippets}/create-tweet/http-response.adoc[]
+
+
+== Commenting on a tweet
+
+=== Create/Get user
+.request
+Following table describes required fields for creating a user.
+include::{snippets}/create-user-for-comment/request-fields.adoc[]
+include::{snippets}/create-user-for-comment/curl-request.adoc[]
+
+.response
+include::{snippets}/create-user-for-comment/http-response.adoc[]
+
+=== Create/Get tweet
+.request
+Following table describes required fields for creating a tweet.
+include::{snippets}/create-tweet-for-comment/request-fields.adoc[]
+include::{snippets}/create-tweet-for-comment/curl-request.adoc[]
+
+.response
+include::{snippets}/create-tweet-for-comment/http-response.adoc[]
+
+
+=== Create Comment
+.request
+Following table describes required fields for commenting on a tweet.
+include::{snippets}/create-comment/request-fields.adoc[]
+include::{snippets}/create-comment/curl-request.adoc[]
+
+.response
+include::{snippets}/create-comment/http-response.adoc[]
 
 
 == Diagrams
