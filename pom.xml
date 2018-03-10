@@ -81,7 +81,7 @@
                             <sourceDocumentName>index.adoc</sourceDocumentName>
                             <backend>html</backend>
                             <doctype>book</doctype>
-                            <outputDirectory>target/classes/static/docs</outputDirectory>
+                            <outputDirectory>target/classes/static/rest-docs</outputDirectory>
                             <attributes>
                                 <snippets>${project.build.directory}/snippets</snippets>
                             </attributes>
